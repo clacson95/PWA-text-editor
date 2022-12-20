@@ -1,11 +1,13 @@
 const { offlineFallback, warmStrategyCache } = require('workbox-recipes');
-const { CacheFirst } = require('workbox-strategies');
+const { StaleWhileRevalidate, CacheFirst } = require('workbox-strategies');
 const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
-precacheAndRoute(self.__WB_MANIFEST);
+if (process.env.NODE_ENV === "production") {
+  precacheAndRoute(self.__WB_MANIFEST);
+}
 
 const pageCache = new CacheFirst({
   cacheName: 'page-cache',
@@ -19,6 +21,7 @@ const pageCache = new CacheFirst({
   ],
 });
 
+// cache warming
 warmStrategyCache({
   urls: ['/index.html', '/'],
   strategy: pageCache,
@@ -26,7 +29,12 @@ warmStrategyCache({
 
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
+
+// reference this website
+// https://developer.chrome.com/docs/workbox/modules/workbox-strategies/
+
 const cacheName = "staticResources";
+
 const matchCallback = ({ request }) => {
   console.log(request);
   return request.destination === "style" || request.destination === "script";
