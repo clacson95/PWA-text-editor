@@ -6,7 +6,7 @@ const path = require('path');
 const { InjectManifest } = require('workbox-webpack-plugin');
 
 
-// configure workbox plugins --> service worker & manifest file
+// configure workbox plugins -- service worker & manifest file
 
 module.exports = () => {
   return {
@@ -22,7 +22,7 @@ module.exports = () => {
     plugins: [
 
       // reference: https://webpack.js.org/plugins/html-webpack-plugin/
-      // generates html file & injects bundles
+      // generates html file & injects bundles; uses babel-loader, see further below
       new HtmlWebpackPlugin({
         template: "./index.html",
       }),
@@ -62,7 +62,28 @@ module.exports = () => {
 
     module: {
       rules: [
-        
+        {
+          test: /\.css$/i,
+          use: ["style-loader", "css-loader"],
+        },
+        {
+          test: /\.m?js$/,
+          exclude: /node_modules/,
+
+          // reference: https://webpack.js.org/loaders/babel-loader/
+          // reference: https://www.robinwieruch.de/webpack-babel-setup-tutorial/ 
+          // babel-loader lets other browswers understand ES6 JavaScript
+          use: {
+            loader: "babel-loader",
+            options: {
+              presets: ["@babel/preset-env"],
+              plugins: [
+                "@babel/plugin-proposal-object-rest-spread",
+                "@babel/transform-runtime",
+              ],
+            },
+          },
+        },
       ],
     },
   };
