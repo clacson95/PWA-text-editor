@@ -30,8 +30,7 @@ warmStrategyCache({
 registerRoute(({ request }) => request.mode === 'navigate', pageCache);
 
 
-// reference this website
-// https://developer.chrome.com/docs/workbox/modules/workbox-strategies/
+// reference: https://developer.chrome.com/docs/workbox/modules/workbox-strategies/
 
 const cacheName = "staticResources";
 

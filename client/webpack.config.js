@@ -21,6 +21,7 @@ module.exports = () => {
     },
     plugins: [
 
+      // reference: https://webpack.js.org/plugins/html-webpack-plugin/
       // generates html file & injects bundles
       new HtmlWebpackPlugin({
         template: "./index.html",
@@ -32,7 +33,27 @@ module.exports = () => {
       swDest: "src-sw.js",
       }),
       
-      
+      // reference: https://www.npmjs.com/package/webpack-pwa-manifest
+      // creates manifest.json file
+      new WebpackPwaManifest({
+        name: "Just Another Text Editor",
+        short_name: "JATE",
+        description: "Just Another Text Editor",
+        display: "standalone",
+        background_color: "#003314",
+        theme_color: "#003314",
+        start_url: "./",
+        publicPath: "./",
+        fingerprints: false,
+        inject: true,
+        icons: [
+          {
+            src: path.resolve("src/images/logo.png"),
+            sizes: [96, 128, 192, 256, 384, 512],
+            destination: path.join("assets", "icons"),
+          },
+        ],
+      }),
 
     ],
 
