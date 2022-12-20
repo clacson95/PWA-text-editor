@@ -43,3 +43,26 @@ registerRoute(
     ],
   })
 );
+
+
+registerRoute(
+  ({ request }) =>
+    ["style", "script", "worker"].includes(request.destination) === "image",
+
+  new CacheFirst({
+
+    cacheName: "image-cache",
+    plugins: [
+      new CacheableResponsePlugin({
+        statuses: [0, 200],
+      }),
+
+      // The "ExpirationPlugin" plugin will cache responses with these headers to a maximum-age of 30 days
+      new ExpirationPlugin({
+        maxEntries: 60,
+        maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
+      }),
+    ],
+
+  })
+);
