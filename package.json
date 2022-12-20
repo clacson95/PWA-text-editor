@@ -12,7 +12,7 @@
     "client": "cd client && npm start"
   },
   "keywords": [],
-  "author": "",
+  "author": "Caleb Lacson",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
