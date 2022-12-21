@@ -39,7 +39,6 @@ Then, open the application folder and enter `npm run start:dev` and open the app
 
 ## Installation
 1. Ensure node.js is installed. 
-2. Ensure there is a `.gitignore` file (with `node_modules` and `.DS_Store` written inside) before installing any npm dependencies. 
 3. Create a `package.json` file by entering the `npm init -y` command in the terminal. 
 4. Use the following command to run the install script, and install required dependencies: `npm run install`
 
