@@ -19,8 +19,11 @@ This application is deployed with **Heroku**:
 ### [Click here to watch a walkthrough video!](https://watch.screencastify.com/v/ObTVBnqg6WWuLbhiXnUv)
 
 ## Screenshots
+The `manifest.json` file:
 ![jate-manifest](https://user-images.githubusercontent.com/108302822/208798124-207783cc-3751-4e6e-80b8-fbb0c9a9260f.png)
+Registered service worker:
 ![jate-sw](https://user-images.githubusercontent.com/108302822/208798139-93689ba9-567c-4d11-9a1f-35aa4f5a40a8.png)
+IndexedDB storage:
 ![jate-indexedDB](https://user-images.githubusercontent.com/108302822/208798148-e4eb0049-cac8-416e-8fac-86997ada0cf3.png)
 
 ## Usage
