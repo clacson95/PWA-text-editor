@@ -7,8 +7,8 @@ This application is deployed with **Heroku**:
 ### [Deployed Application](https://pwa-jate-text-editor.herokuapp.com/)
 
 ## Table of Contents
-* [Screenshots](#screenshots)
 * [Demo](#demo)
+* [Screenshots](#screenshots)
 * [Usage](#usage)
 * [Installation](#installation)
 * [License](#license)
